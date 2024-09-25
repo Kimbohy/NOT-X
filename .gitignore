@@ -13,3 +13,5 @@
 node_modules/
 init.sql
 tmux.md
+
+run_Dev.sh
