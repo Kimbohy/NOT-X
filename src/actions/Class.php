@@ -9,7 +9,7 @@ class User
     private $lastName = '';
     private $email = '';
     private $profilePicture = '';
-    private $connection;
+    protected $connection;
 
     public function __construct($connection, $id)
     {
@@ -52,7 +52,7 @@ class User
                 </form>
             </div>
         </div>
-    <?php
+<?php
     }
 
     public function addReaction($postId, $reaction)
@@ -81,6 +81,13 @@ class User
     public function getProfilePicture()
     {
         return $this->profilePicture;
+    }
+
+    public function getAllPosts()
+    {
+        $request = $this->connection->prepare('SELECT * FROM post');
+        $request->execute();
+        return $request->fetchAll();
     }
 }
 
@@ -139,26 +146,24 @@ class Post
         return $request->fetchAll();
     }
 
-    public function PostComponent()
+    public function postData()
     {
-    ?>
-        <div class="p-3 bg-post rounded-xl">
-            <div class="flex items-end gap-2">
-                <img src='<?php echo $this->user->getProfilePicture(); ?>' alt="profilPicture" class="h-10 rounded-full">
-                <h2 class="text-xl text-maron"><?php echo $this->user->getFullName(); ?></h2>
-                <p class="text-lg text-gris "><?php echo $this->postSince(); ?></p>
-            </div>
-            <p class="p-5"><?php echo $this->content; ?></p>
-            <div class="flex gap-2">
-                <?php
-                echo in_array($this->accountId, array_column($this->reaction, 'id_account')) ?
-                    '<img src="./src/assets/icons/Heart.svg" alt="heart" class="h-6">' :
-                    '<img src="./src/assets/icons/Heart2.svg" alt="heart2" class="h-6">';
-                ?>
-                <img src="./src/assets/icons/Message square.svg" alt="message" class="h-6">
-            </div>
-        </div>
-<?php
+        $response = [
+            'user' => [
+                'profilePicture' => $this->user->getProfilePicture(),
+                'fullName' => $this->user->getFullName()
+            ],
+            'postSince' => $this->postSince(),
+            'content' => $this->content,
+            'reaction' => array_column($this->reaction, 'id_account'),
+            'accountId' => $this->accountId
+        ];
+        return $response;
+    }
+
+    public function getPostId()
+    {
+        return $this->postId;
     }
 }
 
@@ -167,6 +172,11 @@ class Reaction
     private $postId;
     private $accountId;
     private $reaction;
+
+    public function getReaction()
+    {
+        return $this->reaction;
+    }
     private $connection;
 
     public function __construct($connection, $postId, $accountId)
@@ -220,3 +230,16 @@ function getPostList($connection)
 }
 
 $postsId = getPostList($connection);
+
+class UserPost extends User
+{
+    public function getPosts()
+    {
+        global $postsId;
+        foreach ($postsId as $post) {
+            $post = new Post($this->connection, $post['id']);
+            $post->postData();
+        }
+    }
+}
+?>

@@ -1,6 +1,10 @@
 <?php
 session_start();
+if (!isset($_SESSION['userId'])) {
+    header('Location: ./src/pages/log.php');
+}
 include_once './config.php';
+include_once './src/actions/Class.php';
 include_once './src/actions/Post.php';
 $user = new User($connection, $_SESSION['id']);
 ?>
@@ -13,6 +17,10 @@ $user = new User($connection, $_SESSION['id']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./src/output.css" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="./src/assets/logo/black.svg" />
+    <script src="./src/assets/js/script.js" defer></script>
+    <script>
+        localStorage.setItem("accountId", "<?php echo $_SESSION["accountId"]; ?>");
+    </script>
     <title>Document</title>
 </head>
 
@@ -37,17 +45,10 @@ $user = new User($connection, $_SESSION['id']);
             <div class="flex flex-col gap-3 p-2">
                 <?php
                 $user->publishComponent(); // Appel de la méthode pour afficher le formulaire de publication
-                // Préparez une requête pour récupérer toutes les publications
-                $request = $connection->prepare('SELECT id FROM post ORDER BY created_at DESC');
-                $request->execute();
-                $posts = $request->fetchAll();
-
-                // Parcourir et afficher chaque publication
-                foreach ($posts as $postItem) {
-                    $post = new Post($connection, $postItem['id']);
-                    $post->PostComponent(); // Appel de la méthode pour afficher chaque publication
-                }
                 ?>
+                <div id="postContainer" class="flex flex-col gap-3">
+                    <!-- all publications -->
+                </div>
             </div>
         </div>
     </div>
