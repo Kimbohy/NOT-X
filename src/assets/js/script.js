@@ -1,3 +1,5 @@
+const commentSection = document.querySelector("#comment");
+
 document.addEventListener("DOMContentLoaded", () => {
   renderPosts();
 });
@@ -113,6 +115,11 @@ const renderPosts = () => {
         messageIcon.src = "./src/assets/icons/Message square.svg";
         messageIcon.alt = "message";
         messageIcon.className = "h-6";
+        messageIcon.onclick = () => {
+          console.log("Opening comment section");
+          commentSection.classList.toggle("hidden");
+          commentSection.classList.toggle("block");
+        };
 
         reactions.appendChild(heartIcon);
         reactions.appendChild(messageIcon);
@@ -150,3 +157,13 @@ const handleCreatePost = (event) => {
     })
     .catch((error) => console.error("Error creating post:", error));
 };
+
+const handelLogout = () => {
+  localStorage.removeItem("accountId");
+  fetch('http://localhost:8080/src/actions/sesson/logout.php')
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data.message);
+    location.href = "http://localhost:8080/src/pages/login.php";
+  })
+}

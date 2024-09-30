@@ -592,8 +592,16 @@ video {
   position: fixed;
 }
 
+.block {
+  display: block;
+}
+
 .flex {
   display: flex;
+}
+
+.hidden {
+  display: none;
 }
 
 .h-10 {
@@ -606,6 +614,22 @@ video {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-32 {
+  height: 8rem;
+}
+
+.h-24 {
+  height: 6rem;
+}
+
+.h-16 {
+  height: 4rem;
+}
+
+.h-12 {
+  height: 3rem;
 }
 
 .w-10 {
@@ -624,8 +648,28 @@ video {
   width: 2.25rem;
 }
 
+.w-\[10000px\] {
+  width: 10000px;
+}
+
 .w-full {
   width: 100%;
+}
+
+.w-screen {
+  width: 100vw;
+}
+
+.w-5\/6 {
+  width: 83.333333%;
+}
+
+.w-\[90vw\] {
+  width: 90vw;
+}
+
+.flex-grow {
+  flex-grow: 1;
 }
 
 .flex-col {
@@ -648,6 +692,10 @@ video {
   justify-content: flex-end;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
 .justify-between {
   justify-content: space-between;
 }
@@ -668,6 +716,10 @@ video {
   gap: 1.25rem;
 }
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
 .rounded-2xl {
   border-radius: 1rem;
 }
@@ -678,6 +730,10 @@ video {
 
 .rounded-xl {
   border-radius: 0.75rem;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
 }
 
 .bg-casse {
@@ -695,6 +751,21 @@ video {
   background-color: rgb(217 217 217 / var(--tw-bg-opacity));
 }
 
+.bg-beige {
+  --tw-bg-opacity: 1;
+  background-color: rgb(216 210 194 / var(--tw-bg-opacity));
+}
+
+.bg-maron {
+  --tw-bg-opacity: 1;
+  background-color: rgb(177 116 87 / var(--tw-bg-opacity));
+}
+
+.bg-noire {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
 .p-2 {
   padding: 0.5rem;
 }
@@ -707,17 +778,29 @@ video {
   padding: 1.25rem;
 }
 
+.p-4 {
+  padding: 1rem;
+}
+
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
 
-.pt-4 {
-  padding-top: 1rem;
-}
-
 .pl-20 {
   padding-left: 5rem;
+}
+
+.pr-2 {
+  padding-right: 0.5rem;
+}
+
+.pt-2 {
+  padding-top: 0.5rem;
+}
+
+.pt-4 {
+  padding-top: 1rem;
 }
 
 .text-lg {
@@ -730,6 +813,21 @@ video {
   line-height: 1.75rem;
 }
 
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+
 .text-gris {
   --tw-text-opacity: 1;
   color: rgb(74 73 71 / var(--tw-text-opacity));
@@ -738,6 +836,11 @@ video {
 .text-maron {
   --tw-text-opacity: 1;
   color: rgb(177 116 87 / var(--tw-text-opacity));
+}
+
+.text-casse {
+  --tw-text-opacity: 1;
+  color: rgb(250 247 240 / var(--tw-text-opacity));
 }
 
 .outline {

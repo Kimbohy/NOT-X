@@ -54,23 +54,37 @@ $user = new User($connection, $_SESSION['userId']);
                 <div class="h-10 w-44 rounded-2xl bg-casse"></div>
                 <img src="./src/assets/icons/Icon.svg" alt="" class="w-9">
             </nav>
+            <div class="flex flex-nowrap">
 
-            <div class="flex flex-col gap-3 p-2">
-                <div class="flex flex-col gap-3 p-2">
-                    <div class="p-3 bg-post rounded-xl">
+                <div class="flex flex-col flex-grow gap-3 p-2">
+                    <div class="flex flex-col gap-3 p-2">
+                        <div class="p-3 bg-post rounded-xl">
 
-                        <form action="" method="post" onsubmit="handleCreatePost(event)">
-                            <textarea name="content" id="content" cols="30" rows="5" class="w-full p-2 rounded-xl" placeholder="What's on your mind?"></textarea>
-                            <button type="submit" class="w-full p-2 bg-casse rounded-xl">Publish</button>
-                        </form>
+                            <form action="" method="post" onsubmit="handleCreatePost(event)">
+                                <textarea name="content" id="content" cols="30" rows="5" class="w-full p-2 rounded-xl" placeholder="What's on your mind?"></textarea>
+                                <button type="submit" class="w-full p-2 bg-casse rounded-xl">Publish</button>
+                            </form>
 
+                        </div>
+                    </div>
+
+                    <!-- Container for displaying posts -->
+                    <div id="postContainer" class="flex flex-col gap-3">
+                        <!-- All publications will be injected here via JavaScript -->
                     </div>
                 </div>
 
-                <!-- Container for displaying posts -->
-                <div id="postContainer" class="flex flex-col gap-3">
-                    <!-- All publications will be injected here via JavaScript -->
+                <div id="comment" class="w-[10000px] pt-2 pr-2 overflow-hidden">
+                    <div class="flex flex-col gap-3 p-2">
+                        <div class="p-3 bg-post rounded-xl">
+                            <form action="" method="post" onsubmit="handleCreateComment(event)">
+                                <textarea name="content" id="content" cols="30" rows="5" class="w-full p-2 rounded-xl" placeholder="What's on your mind?"></textarea>
+                                <button type="submit" class="w-full p-2 bg-casse rounded-xl">Publish</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
