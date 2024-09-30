@@ -17,6 +17,11 @@ class User
         $this->loadUserData($id);
     }
 
+    public function getUserId()
+    {
+        return $this->id;
+    }
+
     private function loadUserData($id)
     {
         $request = $this->connection->prepare('SELECT * FROM account WHERE id = ?');
@@ -41,26 +46,20 @@ class User
         $request->execute();
     }
 
-    public function publishComponent()
-    {
-?>
-        <div class="flex flex-col gap-3 p-2">
-            <div class="p-3 bg-post rounded-xl">
-                <form action="" method="post">
-                    <textarea name="content" id="content" cols="30" rows="5" class="w-full p-2 rounded-xl" placeholder="What's on your mind?"></textarea>
-                    <button type="submit" class="w-full p-2 bg-casse rounded-xl">Publish</button>
-                </form>
-            </div>
-        </div>
-<?php
-    }
-
     public function addReaction($postId, $reaction)
     {
-        $request = $this->connection->prepare('INSERT INTO post_reaction (id_post, id_account, reaction) VALUES (?, ?, ?)');
+        $request = $this->connection->prepare('INSERT INTO post_reaction (id_post, id_account, type) VALUES (?, ?, ?)');
         $request->bindParam(1, $postId, PDO::PARAM_INT);
         $request->bindParam(2, $this->id, PDO::PARAM_INT);
         $request->bindParam(3, $reaction, PDO::PARAM_STR);
+        $request->execute();
+    }
+
+    public function removeReaction($postId)
+    {
+        $request = $this->connection->prepare('DELETE FROM post_reaction WHERE id_post = ? AND id_account = ?');
+        $request->bindParam(1, $postId, PDO::PARAM_INT);
+        $request->bindParam(2, $this->id, PDO::PARAM_INT);
         $request->execute();
     }
 
@@ -151,12 +150,14 @@ class Post
         $response = [
             'user' => [
                 'profilePicture' => $this->user->getProfilePicture(),
-                'fullName' => $this->user->getFullName()
+                'fullName' => $this->user->getFullName(),
+                'id' => $this->user->getUserId()
             ],
             'postSince' => $this->postSince(),
             'content' => $this->content,
             'reaction' => array_column($this->reaction, 'id_account'),
-            'accountId' => $this->accountId
+            'accountId' => $this->accountId,
+            'postId' => $this->postId
         ];
         return $response;
     }
@@ -164,6 +165,11 @@ class Post
     public function getPostId()
     {
         return $this->postId;
+    }
+
+    public function getIdAccount()
+    {
+        return $this->accountId;
     }
 }
 
@@ -242,4 +248,3 @@ class UserPost extends User
         }
     }
 }
-?>
