@@ -119,6 +119,7 @@ const renderPosts = () => {
           console.log("Opening comment section");
           commentSection.classList.toggle("block");
           commentSection.classList.toggle("hidden");
+          renderComments(dt.postId);
         };
 
         // Ensure the comment section is hidden by default
@@ -165,4 +166,61 @@ const handleLogout = () => {
   localStorage.removeItem("accountId");
   // redirect to http://localhost:8080/src/actions/session/logout.php
   window.location.href = "http://localhost:8080/src/actions/session/logout.php";
+};
+
+const renderComments = (postId) => {
+  const commentContainer = document.querySelector("#commentContainer");
+  commentContainer.innerHTML = "";
+  fetch("http://localhost:8080/src/actions/getComments.php?postId=" + postId)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      if (Array.isArray(data) && data.length > 0) {
+        data.forEach((dt) => {
+          const container = document.createElement("div");
+          container.className = "p-3 bg-post rounded-xl";
+
+          const head = document.createElement("div");
+          head.className = "flex items-center justify-between";
+
+          const userInfo = document.createElement("div");
+          userInfo.className = "flex items-end gap-2";
+
+          const profilePicture = document.createElement("img");
+          profilePicture.src = dt.profilePicture;
+          profilePicture.alt = "profilePicture";
+          profilePicture.className = "h-10 rounded-full";
+
+          const fullName = document.createElement("h2");
+          fullName.className = "text-xl text-maron";
+          fullName.textContent = dt.fullName;
+
+          const postSince = document.createElement("p");
+          postSince.className = "text-lg text-gris";
+          postSince.textContent = dt.commentSince;
+          userInfo.appendChild(profilePicture);
+          userInfo.appendChild(fullName);
+          userInfo.appendChild(postSince);
+          head.appendChild(userInfo);
+
+          const content = document.createElement("p");
+          content.className = "p-5";
+          content.textContent = dt.content;
+          container.appendChild(head);
+          container.appendChild(content);
+
+          commentContainer.appendChild(container);
+
+          // console.log(container);
+        });
+      } else {
+        console.log("No comments available");
+      }
+    })
+    .catch((error) => console.error("Error fetching data:", error));
 };

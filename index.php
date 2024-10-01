@@ -76,6 +76,9 @@ $user = new User($connection, $_SESSION['userId']);
 
                 <div id="comment" class="w-[10000px] pt-2 pr-2 overflow-hidden">
                     <div class="flex flex-col gap-3 p-2">
+                        <div id="commentContainer">
+                            <!-- All comment wille be injected here via JavaScript -->
+                        </div>
                         <div class="p-3 bg-post rounded-xl">
                             <form action="" method="post" onsubmit="handleCreateComment(event)">
                                 <textarea name="content" id="content" cols="30" rows="5" class="w-full p-2 rounded-xl" placeholder="What's on your mind?"></textarea>

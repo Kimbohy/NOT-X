@@ -65,7 +65,7 @@ class User
 
     public function addComment($postId, $content)
     {
-        $request = $this->connection->prepare('INSERT INTO post_comment (id_post, id_account, content) VALUES (?, ?, ?)');
+        $request = $this->connection->prepare('INSERT INTO comment (id_post, id_account, content) VALUES (?, ?, ?)');
         $request->bindParam(1, $postId, PDO::PARAM_INT);
         $request->bindParam(2, $this->id, PDO::PARAM_INT);
         $request->bindParam(3, $content, PDO::PARAM_STR);
@@ -140,6 +140,14 @@ class Post
     private function getReactionsList()
     {
         $request = $this->connection->prepare('SELECT * FROM post_reaction WHERE id_post = ?');
+        $request->bindParam(1, $this->postId, PDO::PARAM_INT);
+        $request->execute();
+        return $request->fetchAll();
+    }
+
+    public function getcommentsList()
+    {
+        $request = $this->connection->prepare('SELECT * FROM comment WHERE id_post = ?');
         $request->bindParam(1, $this->postId, PDO::PARAM_INT);
         $request->execute();
         return $request->fetchAll();
@@ -220,11 +228,59 @@ class Comment
 
     private function loadComment()
     {
-        $request = $this->connection->prepare('SELECT * FROM post_comment WHERE id_post = ? AND id_account = ?');
+        $request = $this->connection->prepare('SELECT * FROM comment WHERE id_post = ? AND id_account = ?');
         $request->bindParam(1, $this->postId, PDO::PARAM_INT);
         $request->bindParam(2, $this->accountId, PDO::PARAM_INT);
         $request->execute();
         $this->comment = $request->fetch();
+    }
+
+    public function getContent()
+    {
+        return $this->comment['content'];
+    }
+
+    public function getFullName()
+    {
+        $request = $this->connection->prepare('SELECT first_name, last_name FROM account WHERE id = ?');
+        $request->bindParam(1, $this->accountId, PDO::PARAM_INT);
+        $request->execute();
+        $result = $request->fetch();
+        return $result['first_name'] . ' ' . $result['last_name'];
+    }
+
+    public function getProfilePicture()
+    {
+        $request = $this->connection->prepare('SELECT profile_picture FROM account WHERE id = ?');
+        $request->bindParam(1, $this->accountId, PDO::PARAM_INT);
+        $request->execute();
+        $result = $request->fetch();
+        return $result['profile_picture'] ?? "./src/assets/images/1.webp";
+    }
+
+    public function getIdAccount()
+    {
+        return $this->accountId;
+    }
+
+    public function getCommentSince()
+    {
+        $request = $this->connection->prepare('SELECT created_at FROM comment WHERE id_post = ? AND id_account = ?');
+        $request->bindParam(1, $this->postId, PDO::PARAM_INT);
+        $request->bindParam(2, $this->accountId, PDO::PARAM_INT);
+        $request->execute();
+        $result = $request->fetch();
+
+        $date = new DateTime($result['created_at']);
+        $now = new DateTime();
+        $interval = $now->diff($date);
+
+        if ($interval->y > 0) return $interval->y . 'y';
+        if ($interval->m > 0) return $interval->m . 'm';
+        if ($interval->d > 0) return $interval->d . 'd';
+        if ($interval->h > 0) return $interval->h . 'h';
+        if ($interval->i > 0) return $interval->i . 'm';
+        return $interval->s . 's';
     }
 }
 
