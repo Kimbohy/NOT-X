@@ -592,6 +592,10 @@ video {
   position: fixed;
 }
 
+.sticky {
+  position: sticky;
+}
+
 .block {
   display: block;
 }
@@ -618,6 +622,10 @@ video {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-full {
+  height: 100%;
 }
 
 .w-10 {
@@ -666,6 +674,10 @@ video {
 
 .w-40 {
   width: 10rem;
+}
+
+.w-\[5000px\] {
+  width: 5000px;
 }
 
 .flex-grow {
@@ -730,6 +742,10 @@ video {
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.overflow-scroll {
+  overflow: scroll;
 }
 
 .rounded-2xl {
@@ -827,6 +843,10 @@ video {
 
 .pt-4 {
   padding-top: 1rem;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .text-end {

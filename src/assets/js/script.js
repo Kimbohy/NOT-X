@@ -1,4 +1,5 @@
 const commentSection = document.querySelector("#comment");
+const commentForm = document.querySelector("#commentForm");
 
 document.addEventListener("DOMContentLoaded", () => {
   renderPosts();
@@ -116,10 +117,36 @@ const renderPosts = () => {
         messageIcon.alt = "message";
         messageIcon.className = "h-6";
         messageIcon.onclick = () => {
-          console.log("Opening comment section");
+          // console.log("Opening comment section");
           commentSection.classList.toggle("block");
           commentSection.classList.toggle("hidden");
           renderComments(dt.postId);
+
+          // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          commentForm.onsubmit = (event) => {
+            event.preventDefault();
+            const content = document.querySelector("#commentContent").value;
+            fetch("http://localhost:8080/src/actions/addComment.php", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                content,
+                postId: dt.postId,
+              }),
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                console.log(data.success);
+                renderComments(dt.postId); // need optimization
+                document.querySelector("#commentContent").value = "";
+              })
+              .catch((error) =>
+                console.error("Error creating comment:", error)
+              );
+          };
+          // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         };
 
         // Ensure the comment section is hidden by default
@@ -179,7 +206,7 @@ const renderComments = (postId) => {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       if (Array.isArray(data) && data.length > 0) {
         data.forEach((dt) => {
           const container = document.createElement("div");
@@ -224,3 +251,5 @@ const renderComments = (postId) => {
     })
     .catch((error) => console.error("Error fetching data:", error));
 };
+
+const handleCreateComment = () => {};
