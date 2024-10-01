@@ -14,10 +14,10 @@
         <img src="../assets/logo/white.png" alt="logo" class="w-40 md:w-64">
         <form action="../actions/session/login.php" method="post" class="flex flex-col gap-5 p-5 lg:gap-7 rounded-xl">
             <label for="email" class="text-3xl lg:text-4xl text-casse">Mail:</label>
-            <input type="email" name="email" placeholder="Email" class=" w-[90vw] md:w-[50vw] lg:w-[40vw] h-12 lg:h-14 rounded-2xl p-4">
+            <input type="email" name="email" placeholder="Email" class=" w-[90vw] md:w-[50vw] text-3xl lg:w-[40vw] h-12 lg:h-14 rounded-2xl p-4">
             <label for="password" class="text-3xl lg:text-4xl text-casse">Password:</label>
-            <input type="password" name="password" placeholder="Password" class=" w-[90vw] md:w-[50vw] lg:w-[40vw] h-12 lg:h-14 rounded-2xl p-4">
-            <a href="./creatAccount.php" class="py-1 pr-3 text-casse text-end">
+            <input type="password" name="password" placeholder="Password" class=" w-[90vw] text-3xl md:w-[50vw] lg:w-[40vw] h-12 lg:h-14 rounded-2xl p-4">
+            <a href="./signUp.php" class="py-1 pr-3 text-casse text-end">
                 <p class="text-xl lg:text-2xl">
                     You don't have an account yet?
                     <span class="underline">
