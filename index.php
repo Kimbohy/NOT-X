@@ -52,7 +52,7 @@ $user = new User($connection, $_SESSION['userId']);
             <!-- Navigation -->
             <nav class="flex justify-end gap-4 p-3 bg-post">
                 <div class="h-10 w-44 rounded-2xl bg-casse"></div>
-                <img src="./src/assets/icons/Icon.svg" alt="" class="w-9">
+                <img src="./src/assets/icons/Icon.svg" alt="" class="cursor-pointer w-9" onclick="handleLogout()">
             </nav>
             <div class="flex flex-nowrap">
 

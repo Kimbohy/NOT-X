@@ -117,9 +117,12 @@ const renderPosts = () => {
         messageIcon.className = "h-6";
         messageIcon.onclick = () => {
           console.log("Opening comment section");
-          commentSection.classList.toggle("hidden");
           commentSection.classList.toggle("block");
+          commentSection.classList.toggle("hidden");
         };
+
+        // Ensure the comment section is hidden by default
+        commentSection.classList.add("hidden");
 
         reactions.appendChild(heartIcon);
         reactions.appendChild(messageIcon);
@@ -158,12 +161,8 @@ const handleCreatePost = (event) => {
     .catch((error) => console.error("Error creating post:", error));
 };
 
-const handelLogout = () => {
+const handleLogout = () => {
   localStorage.removeItem("accountId");
-  fetch('http://localhost:8080/src/actions/sesson/logout.php')
-  .then((response) => response.json())
-  .then((data) => {
-    console.log(data.message);
-    location.href = "http://localhost:8080/src/pages/login.php";
-  })
-}
+  // redirect to http://localhost:8080/src/actions/session/logout.php
+  window.location.href = "http://localhost:8080/src/actions/session/logout.php";
+};
