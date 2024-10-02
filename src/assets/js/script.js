@@ -191,7 +191,6 @@ const handleCreatePost = (event) => {
 
 const handleLogout = () => {
   localStorage.removeItem("accountId");
-  // redirect to http://localhost:8080/src/actions/session/logout.php
   window.location.href = "http://localhost:8080/src/actions/session/logout.php";
 };
 
@@ -206,7 +205,7 @@ const renderComments = (postId) => {
       return response.json();
     })
     .then((data) => {
-      // console.log(data);
+      console.log(data);
       if (Array.isArray(data) && data.length > 0) {
         data.forEach((dt) => {
           const container = document.createElement("div");
@@ -234,12 +233,55 @@ const renderComments = (postId) => {
           userInfo.appendChild(fullName);
           userInfo.appendChild(postSince);
           head.appendChild(userInfo);
+          const heartIcon = document.createElement("img");
+          fetch(
+            `http://localhost:8080/src/actions/getUserReacted.php?commentId=${dt.commentId}`
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              // get the result and do the traitment
+              heartIcon.src =
+                data == true
+                  ? "./src/assets/icons/Heart2.svg"
+                  : "./src/assets/icons/Heart.svg";
+            });
+
+          heartIcon.alt = "heart";
+          heartIcon.className = "h-6";
+          heartIcon.onclick = () => {
+            fetch("http://localhost:8080/src/actions/reactComment.php", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                commentId: dt.id,
+              }),
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                console.log(data.message);
+                heartIcon.src = data.reacted
+                  ? "./src/assets/icons/Heart2.svg" // If reacted, show filled heart
+                  : "./src/assets/icons/Heart.svg"; // If not reacted, show outline heart
+              })
+              .catch((error) =>
+                console.error("Error reacting to post:", error)
+              );
+          };
+          // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
           const content = document.createElement("p");
           content.className = "p-5";
           content.textContent = dt.content;
+
+          const body = document.createElement("div");
+          body.className = "flex justify-between";
+          body.appendChild(content);
+          body.appendChild(heartIcon);
+
           container.appendChild(head);
-          container.appendChild(content);
+          container.appendChild(body);
 
           commentContainer.appendChild(container);
 

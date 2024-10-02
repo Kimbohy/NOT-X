@@ -34,7 +34,7 @@ $user = new User($connection, $_SESSION['userId']);
 </script>
 
 <body>
-    <div class="flex flex-nowrap">
+    <div class="flexflex-nowrap">
         <!-- Sidebar -->
         <aside class="fixed flex flex-col items-center w-20 h-screen gap-5 px-2 pt-4 bg-gris">
             <img src="./src/assets/logo/bg-black.png" alt="logo">
@@ -54,9 +54,9 @@ $user = new User($connection, $_SESSION['userId']);
                 <div class="h-10 w-44 rounded-2xl bg-casse"></div>
                 <img src="./src/assets/icons/Icon.svg" alt="" class="cursor-pointer w-9" onclick="handleLogout()">
             </nav>
-            <div class="flex flex-nowrap">
+            <div class="flex h-screen flex-nowrap">
 
-                <div class="flex flex-col flex-grow h-full gap-3 p-2">
+                <div class="flex flex-col flex-grow h-full gap-3 p-2 overflow-y-scroll no-scrollbar ">
                     <div class="flex flex-col gap-3 p-2">
                         <div class="p-3 bg-post rounded-xl">
 
@@ -74,7 +74,7 @@ $user = new User($connection, $_SESSION['userId']);
                     </div>
                 </div>
 
-                <div id="comment" class="w-[5000px] pt-2 pr-2 overflow-hidden">
+                <div id="comment" class="w-[5000px] h-screen pt-2 pr-2 overflow-y-scroll no-scrollbar">
                     <div class="flex flex-col gap-3 p-2">
                         <h2 class="text-2xl text-center">Comments</h2>
                         <div id="commentContainer" class="flex flex-col gap-3">

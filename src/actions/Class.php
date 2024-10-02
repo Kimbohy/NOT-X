@@ -88,6 +88,23 @@ class User
         $request->execute();
         return $request->fetchAll();
     }
+
+    public function removeCommentReaction($commentId)
+    {
+        $request = $this->connection->prepare('DELETE FROM comment_reaction WHERE id_comment = ? AND id_account = ?');
+        $request->bindParam(1, $commentId, PDO::PARAM_INT);
+        $request->bindParam(2, $this->id, PDO::PARAM_INT);
+        $request->execute();
+    }
+
+    public function addCommentReaction($commentId, $reaction)
+    {
+        $request = $this->connection->prepare('INSERT INTO comment_reaction (id_comment, id_account, type) VALUES (?, ?, ?)');
+        $request->bindParam(1, $commentId, PDO::PARAM_INT);
+        $request->bindParam(2, $this->id, PDO::PARAM_INT);
+        $request->bindParam(3, $reaction, PDO::PARAM_STR);
+        $request->execute();
+    }
 }
 
 class Post
@@ -281,6 +298,16 @@ class Comment
         if ($interval->h > 0) return $interval->h . 'h';
         if ($interval->i > 0) return $interval->i . 'm';
         return $interval->s . 's';
+    }
+
+    public function getUserReacted($accountId)
+    {
+        $request = $this->connection->prepare('SELECT * FROM comment_reaction WHERE id_comment = ? AND id_account = ?');
+        $request->bindParam(1, $this->comment['id'], PDO::PARAM_INT);
+        $request->bindParam(2, $accountId, PDO::PARAM_INT);
+        $request->execute();
+        $result = $request->fetch();
+        return $result ? true : false;
     }
 }
 

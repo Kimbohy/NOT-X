@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     'content' => $comment->getContent(),
                     'fullName' => $comment->getFullName(),
                     'profilePicture' => $comment->getProfilePicture(),
-                    'commentSince' => $comment->getCommentSince()
+                    'commentSince' => $comment->getCommentSince(),
                 ];
             }
         }
