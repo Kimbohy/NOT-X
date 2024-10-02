@@ -14,15 +14,16 @@
         <img src="../assets/logo/white.png" alt="logo" class="w-40 md:w-64">
         <form action="../actions/session/creatAccount.php" method="post" class="flex flex-col gap-5 p-5 lg:gap-7 rounded-xl">
             <label for="firstName" class="text-3xl lg:text-4xl text-casse">First Name:</label>
-            <input type="text" name="firstName" placeholder="" class=" w-[90vw] md:w-[50vw] lg:w-[40vw] h-12 lg:h-14 rounded-2xl p-4">
+            <input type="text" name="firstName" placeholder="" class=" w-[90vw] md:w-[50vw] lg:w-[40vw] text-3xl h-12 lg:h-14 rounded-2xl p-4">
             <label for="lastName" class="text-3xl lg:text-4xl text-casse">Last Name:</label>
-            <input type="text" name="lastName" placeholder="" class=" w-[90vw] md:w-[50vw] lg:w-[40vw] h-12 lg:h-14 rounded-2xl p-4">
+            <input type="text" name="lastName" placeholder="" class=" w-[90vw] md:w-[50vw] lg:w-[40vw] text-3xl h-12 lg:h-14 rounded-2xl p-4">
             <label for="email" class="text-3xl lg:text-4xl text-casse">Mail:</label>
-            <input type="email" name="email" placeholder="" class=" w-[90vw] md:w-[50vw] lg:w-[40vw] h-12 lg:h-14 rounded-2xl p-4">
+            <input type="email" name="email" placeholder="" class=" w-[90vw] md:w-[50vw] lg:w-[40vw] text-3xl h-12 lg:h-14 rounded-2xl p-4">
             <label for="password" class="text-3xl lg:text-4xl text-casse">Password:</label>
             <input type="password" name="password" placeholder="" class=" w-[90vw] md:w-[50vw] lg:w-[40vw] h-12 lg:h-14 rounded-2xl p-4">
             <label for="profilePicture" class="text-3xl lg:text-4xl text-casse">Profile Picture:</label>
             <input type="file" name="profilePicture" class="w-[90vw] md:w-[50vw] lg:w-[40vw] h-12 lg:h-14 rounded-2xl p-4">
+
             <a href="./log.php"
                 class="py-1 pr-3 text-casse text-end">
                 <p class="text-xl lg:text-2xl">
