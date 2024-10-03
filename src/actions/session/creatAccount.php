@@ -12,13 +12,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Validate input
     if (empty($firstName) || empty($lastName) || empty($email) || empty($password)) {
-        header("Location: ../../../../index.php?error=All fields are required");
+        header("Location: ../../pages/signUp.php?error=All fields are required");
         exit();
     }
 
     // Validate email format
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header("Location: ../../../../index.php?error=Invalid email format");
+        header("Location: ../../pages/signUp.php?error=Invalid email format");
         exit();
     }
 
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $checkEmail = $connection->prepare("SELECT * FROM account WHERE email = ?");
     $checkEmail->execute([$email]);
     if ($checkEmail->rowCount() > 0) {
-        header("Location: ../../pages/creatAccount.php?error=Email is already in use");
+        header("Location: ../../pages/signUp.php?error=Email is already in use");
         exit();
     }
 
@@ -37,12 +37,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $targetFile = $targetDir . uniqid() . "." . $fileExtension;
 
     if (!in_array($fileExtension, $allowedExtensions)) {
-        header("Location: ../../pages/creatAccount.php?error=Invalid file type");
+        header("Location: ../../pages/signUp.php?error=Invalid file type");
         exit();
     }
 
     if (!move_uploaded_file($profilePicture["tmp_name"], $targetFile)) {
-        header("Location: ../../pages/creatAccount.php?error=Failed to upload profile picture");
+        header("Location: ../../pages/signUp.php?error=Failed to upload profile picture");
         exit();
     }
 
@@ -55,11 +55,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $request->execute([$firstName, $lastName, $email, $hashedPassword, $targetFile]);
 
         // Redirect to success page
-        header("Location: ../../../index.php?success=Account created successfully");
+        header("Location: ../../pages/index.php?success=Account created successfully");
         exit();
     } catch (PDOException $e) {
         // Handle database errors
-        header("Location: ../../pages/creatAccount.php?error=Database error: " . $e->getMessage());
+        header("Location: ../../pages/signUp.php?error=Database error: " . $e->getMessage());
         exit();
     }
 }
