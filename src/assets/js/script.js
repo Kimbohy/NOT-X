@@ -189,11 +189,6 @@ const handleCreatePost = (event) => {
     .catch((error) => console.error("Error creating post:", error));
 };
 
-const handleLogout = () => {
-  localStorage.removeItem("accountId");
-  window.location.href = "http://localhost:8080/src/actions/session/logout.php";
-};
-
 const renderComments = (postId) => {
   const commentContainer = document.querySelector("#commentContainer");
   commentContainer.innerHTML = "";

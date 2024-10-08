@@ -74,7 +74,17 @@ class User
 
     public function getFullName()
     {
-        return $this->firstName . ' ' . $this->lastName;
+        return $this->getFirstName() . ' ' . $this->getLastName();
+    }
+
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    public function getLastName()
+    {
+        return $this->lastName;
     }
 
     public function getProfilePicture()
@@ -318,7 +328,7 @@ function getPostList($connection)
     return $request->fetchAll();
 }
 
-$postsId = getPostList($connection);
+// $postsId = getPostList($connection);
 
 class UserPost extends User
 {
