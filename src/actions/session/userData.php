@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             'firstName' => $user->getFirstName(),
             'lastName' => $user->getLastName(),
             'profilePicture' => $user->getProfilePicture(),
-            'email' => $user->getProfilePicture()
+            'email' => $user->getEmail()
         ]);
     } else {
         echo json_encode(['error' => 'User not logged in']);

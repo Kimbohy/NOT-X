@@ -9,11 +9,15 @@ document.addEventListener("DOMContentLoaded", function () {
       return response.json();
     })
     .then((data) => {
-      document.querySelector(".profile-picture").src =
-        "../../" + data.profilePicture;
+      Array.from(document.getElementsByClassName("profile-picture")).forEach(
+        (element) => {
+          element.src = "../../" + data.profilePicture;
+        }
+      );
       document.querySelector(
         ".profile-name"
       ).textContent = `${data.firstName} ${data.lastName}`;
+      document.querySelector(".profile-email").textContent = data.email;
     })
     .catch((error) => {
       console.error("There was a problem with the fetch operation:", error);

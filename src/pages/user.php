@@ -30,9 +30,22 @@
                 <div class="h-10 w-44 rounded-2xl bg-casse"></div>
                 <img src="" alt="profilpucture" class="rounded-full w-9 profile-picture">
             </nav>
-            <div class="p-5">
-                <h1 class="text-4xl profile-name"></h1>
-                <button onclick="handleLogout()">
+            <div class="flex flex-col gap-5 p-5">
+
+                <div class="flex items-end">
+                    <img src="" alt="profilpucture" class="rounded-full w-44 profile-picture">
+                    <img src="../assets/icons/File-pen.svg" alt="file-pen" class="w-5">
+                </div>
+                <div class="flex items-end gap-2">
+
+                    <h1 class="text-4xl profile-name"><!-- user Name --></h1>
+                    <button><img src="../assets/icons/Pen.svg" alt="edit" class="w-4"></button>
+                </div>
+                <div class="flex items-end gap-2">
+                    <h2 class="profile-email"><!--- user Email ---></h2>
+                    <button><img src="../assets/icons/Pen.svg" alt="edit" class="w-3"></button>
+                </div>
+                <button onclick="handleLogout()" class="w-32 p-2 text-2xl min-w-fit rounded-xl text-nowrap bg-gris text-beige">
                     Log out
                 </button>
             </div>

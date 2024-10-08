@@ -22,6 +22,11 @@ class User
         return $this->id;
     }
 
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
     private function loadUserData($id)
     {
         $request = $this->connection->prepare('SELECT * FROM account WHERE id = ?');
