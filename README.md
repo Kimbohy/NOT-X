@@ -12,17 +12,18 @@ This project is a web application built with Vite, React, and TypeScript. It als
 ### Installation
 
 1. Clone the repository:
-    ```sh
-    git clone https://github.com/yourusername/not-x.git
-    cd not-x
-    ```
+
+   ```sh
+   git clone https://github.com/yourusername/not-x.git
+   cd not-x
+   ```
 
 2. Install dependencies:
-    ```sh
-    npm install
-    # or
-    yarn install
-    ```
+   ```sh
+   npm install
+   # or
+   yarn install
+   ```
 
 ### Running the Application
 
@@ -30,11 +31,16 @@ To start the development server, run:
 
 ```sh
 npm run dev
+# or
+yarn dev
 ```
+
 ## Backend API
+
 The backend API is located in the api directory and is written in PHP. It includes controllers, models, and routes for handling various operations.
 
 ### API Endpoints
+
 POST /api/post/create.php: Create a new post
 POST /api/account/create.php: Create a new account
 POST /api/comment/create.php: Create a new comment
@@ -50,6 +56,7 @@ TypeScript configuration files:
 
 tsconfig.app.json
 tsconfig.node.json
+
 ### Vite
 
 Vite configuration file:
@@ -57,14 +64,17 @@ Vite configuration file:
 vite.config.ts
 
 ### ESLint
+
 ESLint configuration file:
 
 eslint.config.js
 
 ### Tailwind CSS
+
 Tailwind CSS configuration file:
 
 tailwind.config.js
+
 ### PostCSS
 
 PostCSS configuration file:
@@ -72,4 +82,5 @@ PostCSS configuration file:
 postcss.config.js
 
 ### License
+
 This project is licensed under the MIT License.
