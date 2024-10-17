@@ -1,20 +1,31 @@
-/** @type {import('tailwindcss').Config} */
+/* tailwind.config.js */
 module.exports = {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
-    extend: {
-      colors: {
-        casse: "#FAF7F0",
-        beige: "#D8D2C2",
-        maron: "#B17457",
-        gris: "#4A4947",
-        post: "#D9D9D9",
-        noire: "#000000",
-        blanche: "#F4F4F4",
-      },
+    colors: {
+      primary: "#384358",
+      "primary-light": "#435871",
+      "primary-dark": "#283343",
+      secondary: "#FFA586",
+      "secondary-light": "#FFE2C9",
+      "secondary-dark": "#D3826C",
+      tertiary: "#C51D2B",
+      "tertiary-light": "#F55555",
+      "tertiary-dark": "#9C121B",
+      quaternary: "#792F40",
+      "quaternary-light": "#934955",
+      "quaternary-dark": "#5B202B",
+      white: "#F7F7F7",
+      gray: "#A0A0A0",
+      "gray-900": "#333333",
+      "gray-600": "#666666",
+      "gray-500": "#7B7B7B",
+      "gray-400": "#999999",
+      "gray-300": "#B7B7B7",
+      "gray-200": "#D4D4D4",
+      "gray-100": "#EAEAEA",
+      "gray-50": "#F7F7F7",
     },
   },
   plugins: [],
 };
-
-// npx tailwindcss -i ./src/input.css -o ./src/output.css --watch
