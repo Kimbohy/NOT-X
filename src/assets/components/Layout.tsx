@@ -35,6 +35,7 @@ const Layout = () => {
           ref={swiperRef}
           spaceBetween={0}
           slidesPerView={1}
+          autoHeight={true}
           loop={false}
           onSlideChange={(swiper) => {
             setCurrentPage(swiper.activeIndex as SlideIndex);
@@ -53,6 +54,7 @@ const Layout = () => {
           </SwiperSlide>
         </Swiper>
       </div>
+
       <Nav setCurrentPage={setCurrentPage} currentPage={currentPage} />
     </div>
   );
