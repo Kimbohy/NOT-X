@@ -13,7 +13,7 @@ const Nav = () => {
   const [activePage, setActivePage] = useState(pages[0].id);
 
   return (
-    <div className="sticky bottom-0 flex items-center justify-between w-full px-7 bg-secondary-light flex-nowrap">
+    <div className="sticky bottom-0 z-10 flex items-center justify-between w-full px-7 bg-secondary-light flex-nowrap">
       {pages.map((page) => (
         <button
           className="relative px-3 py-2"

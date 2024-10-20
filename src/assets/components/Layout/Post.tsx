@@ -4,6 +4,7 @@ import Content from "./Post/Content";
 import Head from "./Post/Head";
 
 interface dataType {
+  id: number;
   postOwner: string;
   publishedSins: string;
   content: {
@@ -20,7 +21,11 @@ const Post = ({ data, liked }: { data: dataType; liked: boolean }) => {
         owner={data.postOwner}
         publishedSins={data.publishedSins}
       />
-      <Content text={data.content.text} images={data.content.images} />
+      <Content
+        text={data.content.text}
+        images={data.content.images}
+        id={data.id}
+      />
       <Actions liked={liked} />
     </div>
   );

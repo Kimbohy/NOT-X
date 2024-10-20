@@ -15,16 +15,17 @@ const Session = () => {
         <div className="flex justify-start gap-3 mb-5 border-b-2 border-gray-600">
           <button
             onClick={() => setPage(false)}
-            className={` flex flex-col rounded-lg ${page && "text-gray-600"}`}
+            className={` rounded-lg ${page && "text-gray-600"}`}
           >
             <span>Sign in</span>
             {!page && (
               <motion.div
                 layoutId="underLine"
-                className="relative top-[2px] w-full h-[2px] bg-secondary"
+                className="relative top-[2px] w-full h-[2px] bg-tertiary"
               />
             )}
           </button>
+
           <button
             onClick={() => setPage(true)}
             className={` rounded-lg ${!page && "text-gray-600"}`}
@@ -33,7 +34,7 @@ const Session = () => {
             {page && (
               <motion.div
                 layoutId="underLine"
-                className="relative top-[2px] w-full h-[2px] bg-secondary"
+                className="relative top-[2px] w-full h-[2px] bg-tertiary"
               />
             )}
           </button>

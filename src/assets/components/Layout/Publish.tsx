@@ -2,7 +2,7 @@ import pdp from "../../../../public/1.webp";
 import addImage from "../../icons/Image-plus.svg";
 const Publish = () => {
   return (
-    <div className="flex items-center w-full gap-2 p-2 bg-secondary">
+    <div className="flex items-center w-full gap-2 p-2 bg-tertiary-light">
       <img src={pdp} alt="profile-picture" className="rounded-full w-14" />
       <input
         type="text"
