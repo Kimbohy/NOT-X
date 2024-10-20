@@ -36,7 +36,7 @@ const data3 = {
 };
 const Home = () => {
   return (
-    <div className="flex flex-col w-screen overflow-y-scroll">
+    <div className="flex flex-col w-screen">
       <Publish />
       <div id="post-container" className="flex flex-col p-4 gat-3">
         <Post data={data} liked={true} />

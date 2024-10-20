@@ -28,9 +28,9 @@ const Layout = () => {
   }, [currentPage]);
 
   return (
-    <div>
+    <div className="flex flex-col h-screen">
       <Header />
-      <div className="w-screen">
+      <div className="flex-grow w-screen">
         <Swiper
           ref={swiperRef}
           spaceBetween={0}
@@ -40,6 +40,7 @@ const Layout = () => {
           onSlideChange={(swiper) => {
             setCurrentPage(swiper.activeIndex as SlideIndex);
           }}
+          className="h-full"
         >
           <SwiperSlide key={0}>
             <Home />

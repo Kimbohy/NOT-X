@@ -58,6 +58,7 @@ module.exports = {
       "gray-200": "#D4D4D4",
       "gray-100": "#EAEAEA",
       "gray-50": "#F7F7F7",
+      transparent: "transparent",
     },
   },
   plugins: [],
