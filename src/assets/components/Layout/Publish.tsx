@@ -1,4 +1,4 @@
-import pdp from "../../../../public/1.webp";
+import pdp from "../../images/1.webp";
 import addImage from "../../icons/Image-plus.svg";
 const Publish = () => {
   return (

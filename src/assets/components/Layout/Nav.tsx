@@ -1,7 +1,7 @@
 import find from "../../icons/Magnifying-glass.svg";
 import home from "../../icons/Home.svg";
 import users from "../../icons/Users.svg";
-import pdp from "../../../../public/1.webp";
+import pdp from "../../images/1.webp";
 import { motion } from "framer-motion";
 import { useState } from "react";
 const Nav = () => {

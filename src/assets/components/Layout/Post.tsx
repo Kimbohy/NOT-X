@@ -1,4 +1,4 @@
-import pdp from "../../../../public/1.webp";
+import pdp from "../../images/1.webp";
 import Actions from "./Post/Actions";
 import Content from "./Post/Content";
 import Head from "./Post/Head";

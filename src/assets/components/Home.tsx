@@ -9,7 +9,7 @@ const data = {
   publishedSins: "2d",
   content: {
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, nisi atque nobis eos et praesentium! Dolorum!",
-    images: ["./public/detailed-shot-car-wheels-tires.jpg"],
+    images: ["./src/assets/images/detailed-shot-car-wheels-tires.jpg"],
   },
 };
 const data2 = {
