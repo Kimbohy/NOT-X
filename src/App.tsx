@@ -1,12 +1,12 @@
 // import Session from "./assets/components/Session";
 
-import Home from "./assets/components/Home";
+import Layout from "./assets/components/Layout";
 
 function App() {
   return (
     <>
       {/* <Session /> */}
-      <Home />
+      <Layout />
     </>
   );
 }

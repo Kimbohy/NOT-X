@@ -1,7 +1,5 @@
-import Header from "./Layout/Header";
-import Nav from "./Layout/Nav";
-import Post from "./Layout/Post";
-import Publish from "./Layout/Publish";
+import Post from "../Post";
+import Publish from "../Publish";
 
 const data = {
   id: 0,
@@ -39,14 +37,12 @@ const data3 = {
 const Home = () => {
   return (
     <div className="flex flex-col">
-      <Header />
       <Publish />
       <div id="post-container" className="flex flex-col p-4 gat-3">
         <Post data={data} liked={true} />
         <Post data={data2} liked={false} />
         <Post data={data3} liked={false} />
       </div>
-      <Nav />
     </div>
   );
 };
