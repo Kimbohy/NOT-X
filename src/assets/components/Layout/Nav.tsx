@@ -3,15 +3,19 @@ import home from "../../icons/Home.svg";
 import users from "../../icons/Users.svg";
 import pdp from "../../images/1.webp";
 import { motion } from "framer-motion";
-import { useState } from "react";
 
-const Nav = ({ setCurrentPage }: { setCurrentPage: Function }) => {
+const Nav = ({
+  setCurrentPage,
+  currentPage,
+}: {
+  setCurrentPage: Function;
+  currentPage: 0 | 1 | 2;
+}) => {
   const pages = [
-    { icon: home, id: "home" },
-    { icon: users, id: "users" },
-    { icon: find, id: "research" },
+    { index: 0, icon: home, id: "home" },
+    { index: 1, icon: users, id: "users" },
+    { index: 2, icon: find, id: "research" },
   ];
-  const [activePage, setActivePage] = useState(pages[0].id);
 
   return (
     <div className="sticky bottom-0 z-10 flex items-center justify-between w-full px-7 bg-secondary-light flex-nowrap">
@@ -20,11 +24,10 @@ const Nav = ({ setCurrentPage }: { setCurrentPage: Function }) => {
           className="relative px-3 py-2"
           key={page.id}
           onClick={() => {
-            setActivePage(page.id);
-            setCurrentPage(page.id);
+            setCurrentPage(page.index);
           }}
         >
-          {activePage == page.id && (
+          {currentPage == page.index && (
             <motion.div
               layoutId="active-pill"
               className="absolute inset-0 bg-tertiary-light"
