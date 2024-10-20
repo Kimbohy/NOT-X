@@ -4,11 +4,12 @@ import users from "../../icons/Users.svg";
 import pdp from "../../images/1.webp";
 import { motion } from "framer-motion";
 import { useState } from "react";
-const Nav = () => {
+
+const Nav = ({ setCurrentPage }: { setCurrentPage: Function }) => {
   const pages = [
     { icon: home, id: "home" },
     { icon: users, id: "users" },
-    { icon: find, id: "find" },
+    { icon: find, id: "research" },
   ];
   const [activePage, setActivePage] = useState(pages[0].id);
 
@@ -20,6 +21,7 @@ const Nav = () => {
           key={page.id}
           onClick={() => {
             setActivePage(page.id);
+            setCurrentPage(page.id);
           }}
         >
           {activePage == page.id && (
