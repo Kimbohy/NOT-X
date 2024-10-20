@@ -1,6 +1,6 @@
 const Users = () => {
   return (
-    <div className="w-screen h-full bg-tertiary">
+    <div className="w-screen h-80 bg-tertiary">
       <h1>Users</h1>
     </div>
   );

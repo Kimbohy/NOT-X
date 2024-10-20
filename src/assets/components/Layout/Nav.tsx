@@ -8,7 +8,7 @@ const Nav = ({
   setCurrentPage,
   currentPage,
 }: {
-  setCurrentPage: Function;
+  setCurrentPage: React.Dispatch<React.SetStateAction<0 | 1 | 2>>;
   currentPage: 0 | 1 | 2;
 }) => {
   const pages = [
@@ -24,7 +24,7 @@ const Nav = ({
           className="relative px-3 py-2"
           key={page.id}
           onClick={() => {
-            setCurrentPage(page.index);
+            setCurrentPage(page.index as 0 | 1 | 2);
           }}
         >
           {currentPage == page.index && (
