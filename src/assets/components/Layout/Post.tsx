@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import pdp from "../../images/1.webp";
 import Actions from "./Post/Actions";
 import Content from "./Post/Content";
@@ -13,7 +14,15 @@ interface dataType {
   };
 }
 
-const Post = ({ data, liked }: { data: dataType; liked: boolean }) => {
+const Post = ({
+  data,
+  liked,
+  setCommenting,
+}: {
+  data: dataType;
+  liked: boolean;
+  setCommenting: Dispatch<SetStateAction<number | false>>;
+}) => {
   return (
     <div className="p-5 rounded-md shadow-lg">
       <Head
@@ -26,7 +35,7 @@ const Post = ({ data, liked }: { data: dataType; liked: boolean }) => {
         images={data.content.images}
         id={data.id}
       />
-      <Actions liked={liked} />
+      <Actions liked={liked} id={data.id} setCommenting={setCommenting} />
     </div>
   );
 };
