@@ -9,7 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperClass } from "swiper";
 import Comments from "./Layout/Comments";
 import "swiper/css";
-import { AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Define types
 type SlideIndex = 0 | 1 | 2;
@@ -30,9 +30,7 @@ const Layout = () => {
   }, [currentPage]);
 
   return (
-    <div
-      className={`flex flex-col h-screen ${commenting && " overflow-y-hidden"}`}
-    >
+    <div className="flex flex-col h-screen">
       <div onClick={() => commenting !== false && setCommenting(false)}>
         <Header />
         <div className="flex-grow w-screen">
@@ -62,8 +60,18 @@ const Layout = () => {
         </div>
 
         <Nav setCurrentPage={setCurrentPage} currentPage={currentPage} />
+        <AnimatePresence>
+          {commenting !== false && (
+            <motion.div
+              className="sticky bottom-0 z-20 min-h-screen bg-gray-900"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.7 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+            />
+          )}
+        </AnimatePresence>
       </div>
-
       <AnimatePresence>
         {commenting !== false && <Comments postId={commenting} />}
       </AnimatePresence>

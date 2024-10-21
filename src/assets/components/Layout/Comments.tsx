@@ -9,7 +9,7 @@ const Comments = ({ postId }: { postId: number }) => {
       transition={{
         duration: 0.45,
       }}
-      className="absolute bottom-0 z-20 w-screen p-2 rounded-t-2xl h-3/5 bg-secondary"
+      className="sticky z-20 w-screen p-2 min-h-[75vh] rounded-t-2xl bg-secondary-light flex flex-col items-center"
     >
       <h1>comment</h1>
       <h2>{postId}</h2>
