@@ -15,6 +15,7 @@ const Nav = ({
     { index: 0, icon: home, id: "home" },
     { index: 1, icon: users, id: "users" },
     { index: 2, icon: find, id: "research" },
+    { index: 3, icon: pdp, id: "profile" },
   ];
 
   return (
@@ -34,10 +35,17 @@ const Nav = ({
               style={{ borderRadius: 4 }}
             />
           )}
-          <img src={page.icon} alt={page.id} className="relative z-10 h-8 " />
+          {page.index != 3 ? (
+            <img src={page.icon} alt={page.id} className="relative z-10 h-8 " />
+          ) : (
+            <img
+              src={pdp}
+              alt="profilePicture"
+              className="relative z-10 rounded-full h-11"
+            />
+          )}
         </button>
       ))}
-      <img src={pdp} alt="profilePicture" className="rounded-full h-11" />
     </div>
   );
 };

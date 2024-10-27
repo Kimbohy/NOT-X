@@ -10,6 +10,7 @@ import { Swiper as SwiperClass } from "swiper";
 import Comments from "./Layout/Comments";
 import "swiper/css";
 import { motion, AnimatePresence } from "framer-motion";
+import UserCenter from "./Layout/pages/UserCenter";
 
 // Define types
 type SlideIndex = 0 | 1 | 2;
@@ -33,6 +34,7 @@ const Layout = () => {
     <div className="flex flex-col h-screen">
       <div onClick={() => commenting !== false && setCommenting(false)}>
         <Header />
+
         <div className="flex-grow w-screen">
           <Swiper
             ref={swiperRef}
@@ -56,6 +58,9 @@ const Layout = () => {
             <SwiperSlide key={2}>
               <Research />
             </SwiperSlide>
+            <SwiperSlide key={3}>
+              <UserCenter />
+            </SwiperSlide>
           </Swiper>
         </div>
 
@@ -72,6 +77,7 @@ const Layout = () => {
           )}
         </AnimatePresence>
       </div>
+
       <AnimatePresence>
         {commenting !== false && <Comments postId={commenting} />}
       </AnimatePresence>

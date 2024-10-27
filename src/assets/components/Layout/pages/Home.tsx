@@ -45,6 +45,15 @@ const data4 = {
     images: ["./src/assets/images/Miles.jpg"],
   },
 };
+const data5 = {
+  id: 4,
+  postOwner: "Lex Fridman",
+  publishedSins: "5h",
+  content: {
+    text: "",
+    images: ["./src/assets/images/20.jpg","./src/assets/images/21.jpg","./src/assets/images/19.jpg","./src/assets/images/11.jpg","./src/assets/images/9.jpg","./src/assets/images/8.jpg","./src/assets/images/6.jpg"],
+}
+};
 const Home = ({
   setCommenting,
 }: {
@@ -58,6 +67,7 @@ const Home = ({
         <Post data={data2} liked={false} setCommenting={setCommenting} />
         <Post data={data3} liked={true} setCommenting={setCommenting} />
         <Post data={data4} liked={false} setCommenting={setCommenting} />
+        <Post data={data5} liked={true} setCommenting={setCommenting} />
       </div>
     </div>
   );
