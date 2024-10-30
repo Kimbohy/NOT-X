@@ -33,7 +33,7 @@ const Layout = () => {
   return (
     <div className="flex flex-col h-screen">
       <div onClick={() => commenting !== false && setCommenting(false)}>
-        <Header page="home" />
+        <Header page="home" setCurrentPage={setCurrentPage} />
 
         <div className="flex-grow w-screen">
           <Swiper

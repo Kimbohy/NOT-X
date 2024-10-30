@@ -46,7 +46,7 @@ const Notification = () => {
   };
   return (
     <>
-      <Header page="notification" />
+      <Header page="notification" setCurrentPage={() => {}} />
       <div id="comment-container" className="flex flex-col gap-4 p-3">
         {notifications.map((notification) => (
           <div className="flex gap-2" onClick={view(notification.link)}>

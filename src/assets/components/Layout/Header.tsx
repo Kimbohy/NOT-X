@@ -2,7 +2,13 @@ import logo from "../../icons/logo/white.svg";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 
-const Header = ({ page }: { page: string }) => {
+const Header = ({
+  page,
+  setCurrentPage,
+}: {
+  page: string;
+  setCurrentPage: React.Dispatch<React.SetStateAction<0 | 1 | 2>>;
+}) => {
   const pathVariants = {
     hidden: {
       opacity: 1,
@@ -19,7 +25,14 @@ const Header = ({ page }: { page: string }) => {
 
   return (
     <header className="sticky top-0 z-20 flex justify-between px-3 py-3 flex-nowrap bg-primary">
-      <img src={logo} alt="Black-logo" className="w-12" />
+      <Link to="/">
+        <img
+          src={logo}
+          alt="Black-logo"
+          className="w-12"
+          onClick={() => setCurrentPage(0)}
+        />
+      </Link>
       <AnimatePresence>
         <div className="flex items-center gap-4 flex-nowrap">
           {page !== "home" && (
