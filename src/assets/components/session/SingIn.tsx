@@ -5,7 +5,14 @@ import { motion } from "framer-motion";
 
 const SingIn = () => {
   return (
-    <form action="" className="flex flex-col gap-3 ">
+    <motion.form
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.75 }}
+      action=""
+      className="flex flex-col gap-3 "
+    >
       <div className="flex flex-col gap-2">
         <label className="text-sm text-gray-600">E-mail/Phone</label>
         <input
@@ -24,16 +31,16 @@ const SingIn = () => {
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
         />
       </div>
-      <motion.div layoutId="bottom">
+      <motion.div layoutId="bottom" className="flex flex-col gap-3">
         <input
           type="submit"
           value="Sing in"
-          className="w-full p-2 text-white rounded-lg bg-primary hover:bg-primary-dark"
+          className="w-full p-2 mt-3 text-white rounded-lg h-11 bg-primary hover:bg-primary-dark"
         />
         <span className="text-sm text-gray-600 cursor-pointer">
           Forgot Password?
         </span>
-        <div className="flex flex-col items-center gap-1">
+        <div className="flex flex-col items-center gap-3">
           <span className="text-sm text-gray-600">Or sign in with</span>
           <div className="flex gap-10">
             <button className="flex items-center justify-center gap-2 px-4 py-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary focus:border-primary hover:bg-gray-100">
@@ -47,7 +54,7 @@ const SingIn = () => {
           </div>
         </div>
       </motion.div>
-    </form>
+    </motion.form>
   );
 };
 

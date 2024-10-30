@@ -79,7 +79,7 @@ const Layout = () => {
       </div>
 
       <AnimatePresence>
-        {commenting !== false && <Comments postId={commenting} />}
+        {commenting !== false && <Comments /*postId={commenting}*/ />}
       </AnimatePresence>
     </div>
   );
