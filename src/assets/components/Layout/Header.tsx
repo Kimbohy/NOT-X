@@ -7,13 +7,13 @@ const Header = ({ page }: { page: string }) => {
     hidden: {
       opacity: 1,
       pathLength: 0,
-      strokeDashoffset: 1, // Adjust this value based on the path length
+      strokeDashoffset: 1,
     },
     visible: {
       opacity: 1,
       pathLength: 1,
       strokeDashoffset: 0,
-      transition: { duration: 2 }, // Duration of the drawing effect
+      transition: { duration: 2 },
     },
   };
 
@@ -34,10 +34,10 @@ const Header = ({ page }: { page: string }) => {
                   fill-rule="nonzero"
                 >
                   <motion.path
-                    fill="none" // Change fill to none for drawing effect
-                    stroke="#ffffff" // Set stroke color
-                    strokeWidth="2" // Set stroke width
-                    strokeDasharray="1000" // Adjust based on the length of the path
+                    fill="none"
+                    stroke="#ffffff"
+                    strokeWidth="3.2"
+                    strokeDasharray="1000"
                     variants={pathVariants}
                     initial="hidden"
                     animate="visible"
@@ -57,10 +57,10 @@ const Header = ({ page }: { page: string }) => {
                   viewBox="0 0 448 512"
                 >
                   <motion.path
-                    fill="none" // Change fill to none for drawing effect
-                    stroke="#ffffff" // Set stroke color
-                    strokeWidth="20" // Set stroke width
-                    strokeDasharray="1000" // Adjust based on the length of the path
+                    fill="none"
+                    stroke="#ffffff"
+                    strokeWidth="35"
+                    strokeDasharray="1000"
                     variants={pathVariants}
                     initial="hidden"
                     animate="visible"
