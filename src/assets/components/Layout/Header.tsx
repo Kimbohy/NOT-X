@@ -25,9 +25,7 @@ const Header = ({ page }: { page: string }) => {
           {page !== "home" && (
             <Link to="/">
               <div className={`w-9 ${page === "home" && " invisible"}`}>
-                {/* 
-            home icon
-            */}
+                {/* home icon */}
                 <motion.svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0,0,60,60"
