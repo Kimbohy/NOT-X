@@ -1,7 +1,9 @@
+import Header from "../Header";
+
 const Notification = () => {
   return (
     <div>
-      <h1>Notification</h1>
+      <Header page="notification" />
     </div>
   );
 };
