@@ -34,10 +34,9 @@ const commentsData: commentsType[] = [
   },
 ];
 
-const Comments = ({ postId }: { postId: number }) => {
+const Comments = (/*{ postId }: { postId: number }*/) => {
   const [comments, setComments] = useState<commentsType[]>(commentsData);
-  const handleSend = () => {
-  }
+  const handleSend = () => {};
   return (
     <motion.div
       initial={{ bottom: -1000 }}
@@ -58,10 +57,10 @@ const Comments = ({ postId }: { postId: number }) => {
           </div>
         ))}
       </div>
-      <div>
-        <img src={pdp} alt="pdp" />
+      <div className="bottom-0 flex ">
+        <img src={pdp} alt="pdp" className="w-16 rounded-full" />
         <input type="text" placeholder="Ur comment" />
-        <button onClick={() =>handleSend()} >send</button>
+        <button onClick={() => handleSend()}>send</button>
       </div>
     </motion.div>
   );

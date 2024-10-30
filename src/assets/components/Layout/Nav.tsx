@@ -28,7 +28,7 @@ const Nav = ({
             y: 100,
             transition: { duration: 0.75, delay: 0.5 },
           }}
-          className="sticky bottom-0 z-10 flex items-center justify-between w-full px-7 bg-secondary-light flex-nowrap"
+          className="fixed bottom-0 z-10 flex items-center justify-between w-full px-7 bg-secondary-light flex-nowrap"
         >
           {pages.map((page) => (
             <button
